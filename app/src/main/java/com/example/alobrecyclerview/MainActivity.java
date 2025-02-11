@@ -26,17 +26,13 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        RecyclerView recyclerView;
-        MyAdapter adapter;
-        List<DataItem> dataList;
-        dataList = new ArrayList<>();
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        List<DataItem> dataList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             dataList.add(new DataItem("Item " + (i + 1)));
         }
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MyAdapter(dataList, this);
+        MyAdapter adapter = new MyAdapter(this, dataList.toArray(new DataItem[0]));
         recyclerView.setAdapter(adapter);
-
     }
 }

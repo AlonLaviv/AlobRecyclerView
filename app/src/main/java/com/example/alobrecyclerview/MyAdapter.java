@@ -10,17 +10,29 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
+package com.example.recyclerviewexample; // שמור על שם החבילה שלך
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-    private List<String> dataList;
+
     private Context context;
-    public MyAdapter(List<String> dataList, Context context) {
-        this.dataList = dataList;
+    private DataItem[] dataItems;
+    public MyAdapter(Context context, DataItem[] dataItems) {
         this.context = context;
+        this.dataItems = dataItems;
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        EditText editText;
-        Button button;
+        private EditText editText;
+        private Button button;
         public ViewHolder(View itemView) {
             super(itemView);
             editText = itemView.findViewById(R.id.editText_item);
@@ -45,6 +57,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
     @Override
     public int getItemCount() {
-        return dataList.size();
+        return dataItems.length;
     }
 }
