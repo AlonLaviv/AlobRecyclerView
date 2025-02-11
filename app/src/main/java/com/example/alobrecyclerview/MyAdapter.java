@@ -8,44 +8,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.view.menu.MenuView;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-
-import androidx.recyclerview.widget.RecyclerView;
-
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
-
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
+    private List<DataItem> dataList;
     private Context context;
-    private DataItem[] dataItems;
-    public MyAdapter(Context context, DataItem[] dataItems) {
+    public MyAdapter(List<DataItem> dataList,Context context){
         this.context = context;
-        this.dataItems = dataItems;
+        this.dataList = dataList;
     }
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        private EditText editText;
-        private Button button;
-        public ViewHolder(View itemView) {
-            super(itemView);
-            editText = itemView.findViewById(R.id.editText_item);
-            button = itemView.findViewById(R.id.button_submit);
-        }
-    }
-    @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         View view = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false);
         return new ViewHolder(view);
     }
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.editText.setText("");
+    public void onBindViewHolder(@NonNull MyAdapter.ViewHolder holder, int position) {
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +38,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
     @Override
     public int getItemCount() {
-        return dataItems.length;
+        return dataList.size();
+    }
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        EditText editText;
+        Button button;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            editText = itemView.findViewById(R.id.editText_item);
+            button = itemView.findViewById(R.id.button_submit);
+        }
     }
 }
