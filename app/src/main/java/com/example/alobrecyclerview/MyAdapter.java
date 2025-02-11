@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
-package com.example.recyclerviewexample; // שמור על שם החבילה שלך
 
 import android.content.Context;
 import android.view.LayoutInflater;
