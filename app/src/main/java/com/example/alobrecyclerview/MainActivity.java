@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        int how_bigofalist = 20;
+        int how_bigofalist = 30;
         List<DataItem> dataList = new ArrayList<>();
         for (int i = 0; i < how_bigofalist; i++) dataList.add(new DataItem("item"+(i+1)));
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
